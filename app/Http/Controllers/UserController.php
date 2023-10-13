@@ -19,12 +19,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $all_users = User::select('users.*')
-                ->join('user_images as ui', 'ui.user_id', 'users.id')
-                ->orderByRaw('count(ui.user_id ) DESC')
-                ->groupBy('ui.user_id')
-                ->paginate(config('app.rows_per_page'));
-    
+        
+        $all_users = User::select('users.id', 'users.name')
+            ->leftJoin('user_images as ui', 'ui.user_id', 'users.id')
+            ->orderByRaw('count(ui.id ) DESC')
+            ->groupBy('users.id', 'users.name')
+            ->paginate(config('app.rows_per_page'));
+            
         foreach($all_users as $row){
             $count = count(ModelsUserImages::select('user_id')->where('user_id', '=', $row->id)->get());
             $row->countUploadedImages = $count; 
