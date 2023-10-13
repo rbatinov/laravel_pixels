@@ -30,7 +30,7 @@ class StoreContactMessageRequest extends FormRequest
         return [
             
             'name' => ['min:3', 'max:255', 'regex:' . $regexUserName],
-            'email' => ['required', 'email:rfc,dns', 'min:3', 'max:255', Rule::unique('users', 'email')], 
+            'email' => ['required', 'email:rfc,dns', 'min:3', 'max:255'], 
             'dsc' => ['required', 'min:1', 'regex:' . $regexText]
 
                 
