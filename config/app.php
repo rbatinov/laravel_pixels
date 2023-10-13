@@ -13,8 +13,30 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'PIXELS'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Rows Per Page
+    |--------------------------------------------------------------------------
+    |
+    | This shows the default rows per page
+    */
+    'rows_per_page' => 10,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Max Comments
+    |--------------------------------------------------------------------------
+    |
+    | Maximum allowed comments per picture
+    */
+    'max_picture_comments' => 10,
+
+    'max_picture_uploads' => 10,
+    
+    'default_admin_type_id' => -1,
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -95,6 +117,19 @@ return [
 
     'fallback_locale' => 'en',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Available locales
+    |--------------------------------------------------------------------------
+    |
+    | List all locales that your application works with
+    |
+    */
+    'available_locales' => [
+        'l_english' => 'en',
+        'l_bulgarian' => 'bg',
+    ],
+    
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
