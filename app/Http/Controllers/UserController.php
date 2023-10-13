@@ -177,9 +177,13 @@ class UserController extends Controller
     }
 
     public function user_profile(User $user){
-        
         $userImages = ModelsUserImages::where('user_id', '=', $user->id)->paginate(config('app.rows_per_page'));
-        
+        foreach($userImages as $row){
+            $row->user_name = $user->name; 
+        }
+
+        $userImages->user_name = $user->name;
+
         return view('users.user', 
             [
                 'user' => $user, 
