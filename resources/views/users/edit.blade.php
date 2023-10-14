@@ -30,7 +30,7 @@
                 <div class="mb-2">
 
                 </div>
-                {{-- <div class="mb-6">
+                <div class="mb-6">
                     <label
                         for="password"
                         class="inline-block text-lg mb-2"
@@ -46,7 +46,7 @@
                     @error('password')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
-                </div> --}}
+                </div>
 
                 
 

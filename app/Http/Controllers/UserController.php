@@ -116,7 +116,25 @@ class UserController extends Controller
         }
 
         $formFields = $request->validated();
-        $formFields['password'] = $request->route('user')->password;
+
+        
+        if(!empty($request->password)){
+            $validatedData = $request->validate([
+                'password' => 'required|min:6|max:255',
+            ]);
+            
+            // store the new password
+            
+            $formFields['password'] = bcrypt($validatedData['password']);
+            //dd($validatedData['password']);
+        }
+        else{
+            // store the old password
+            $formFields['password'] = $request->route('user')->password;
+
+        }
+        //dd(empty($request->password));
+        
 
         $user->update($formFields);
 
