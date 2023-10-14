@@ -9,7 +9,7 @@
                     "
                     >
     
-                    <div class="mb-8 border border-solid rounded-xl p-8">
+                    <x-card class="mb-8 border border-solid rounded-xl p-8">
                         <h1 class="text-deep-purple text-3xl">{{ __('labels.l_admin_dashboard_latest_users') }}</h1>
 
                         <hr style="width:50%; margin-left:auto; margin-right:auto;">
@@ -26,14 +26,18 @@
                             <div class="text-deep-purple text-xl font-black">Uploaded Images</div>
                             
                             @foreach ($last_registered_users as $row)
-                                    <div class="border-b border-solid">{{ $row->name }}</div>
+                                    <div class="border-b border-solid">
+                                        <a href="{{ route('user_profile_url', ['user' => $row ] ) }}"
+                                            title="{{ __('labels.l_click_to_view_title') }}">{{ $row['name'] }}
+                                        </a>
+                                    </div>
                                     <div class="border-b border-solid">{{ $row->created_at }}</div>
                                     <div class="border-b border-solid">{{ $row->countUploadedImages }}</div>
                             @endforeach
                         </div>
-                    </div>
+                    </x-card>
 
-                    <div class="mb-8 border border-solid rounded-xl p-8">
+                    <x-card class="mb-8 border border-solid rounded-xl p-8">
                         <h1 class="text-deep-purple text-3xl">{{ __('labels.l_admin_dashboard_latest_pictures') }}</h1>
 
                         <hr style="width:50%; margin-left:auto; margin-right:auto;">
@@ -48,6 +52,6 @@
                                 
                             @endforeach
                         </x-grid-picture>
-                    </div>
+                    </x-card>
     </div>
 </x-layout>
